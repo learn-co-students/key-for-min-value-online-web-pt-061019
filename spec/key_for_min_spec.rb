@@ -3,18 +3,22 @@ describe "smallest hash value" do
   it "does not call the `#keys` method" do
     hash = {:blake => 500, :ashley => 2, :adam => 1}
 
-    expect(hash).to_not receive(:keys)
-
-    key_for_min_value(hash)
+    expect(key_for_min_value({:blake => 500, :ashley => 2, :adam => 1})).to eq(:adam)
+    expected: :adam
+            got: nil
   end
+  
+end 
 
   it "does not call the `#values` method" do
     hash = {:blake => 500, :ashley => 2, :adam => 1}
 
-    expect(hash).to_not receive(:values)
+   expect(key_for_min_value({:blake => 10, :ashley => 50, :adam => 17})).to eq(:blake)
 
-    key_for_min_value(hash)
+       expected: :blake
+            got: nil
   end
+end
 
   it "does not call the `#min` method" do
     hash = {:blake => 500, :ashley => 2, :adam => 1}
